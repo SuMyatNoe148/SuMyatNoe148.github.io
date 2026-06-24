@@ -24,9 +24,7 @@ function sendErrorMail(string $subject, string $body): void
     if (empty($to) || empty($username) || empty($password)) return;
 
     try {
-        require_once 'C:/xampp/htdocs/ITVisionHub/media_library/vendor/phpmailer/phpmailer/src/Exception.php';
-        require_once 'C:/xampp/htdocs/ITVisionHub/media_library/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-        require_once 'C:/xampp/htdocs/ITVisionHub/media_library/vendor/phpmailer/phpmailer/src/SMTP.php';
+        require_once __DIR__ . '/vendor/autoload.php';
 
         $mail = new PHPMailer\PHPMailer\PHPMailer(true);
         $mail->isSMTP();
