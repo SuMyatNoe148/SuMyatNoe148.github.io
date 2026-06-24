@@ -306,3 +306,22 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Export for testing (Node.js / Jest)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        initNavbar,
+        initTypewriter,
+        initParticles,
+        initCounters,
+        animateCounter,
+        initSkillBars,
+        initProjectFilter,
+        initBackToTop,
+        initSmoothScroll,
+        initContactForm,
+        initThemeToggle,
+        updateThemeIcon,
+        initScrollReveal
+    };
+}
