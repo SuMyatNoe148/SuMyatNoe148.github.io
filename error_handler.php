@@ -17,33 +17,21 @@ error_reporting(E_ALL);
 
 function sendErrorMail(string $subject, string $body): void
 {
-    $to       = $_ENV['MAIL_TO'] ?? '';
-    $username = $_ENV['MAIL_USERNAME'] ?? '';
-    $password = $_ENV['MAIL_PASSWORD'] ?? '';
+    require_once __DIR__ . '/includes/mailer.php';
 
-    if (empty($to) || empty($username) || empty($password)) return;
+    $creds = getMailCredentials();
+    if (empty($creds['to']) || empty($creds['username']) || empty($creds['password'])) return;
 
     try {
-        require_once 'C:/xampp/htdocs/ITVisionHub/media_library/vendor/phpmailer/phpmailer/src/Exception.php';
-        require_once 'C:/xampp/htdocs/ITVisionHub/media_library/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-        require_once 'C:/xampp/htdocs/ITVisionHub/media_library/vendor/phpmailer/phpmailer/src/SMTP.php';
-
-        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = $username;
-        $mail->Password   = $password;
-        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
-        $mail->setFrom($username, 'Portfolio Error Monitor');
-        $mail->addAddress($to, 'Su Myat Noe');
+        $mail = createMailer();
+        $mail->setFrom($creds['username'], 'Portfolio Error Monitor');
+        $mail->addAddress($creds['to'], 'Su Myat Noe');
         $mail->isHTML(true);
         $mail->Subject = $subject;
         $mail->Body    = $body;
         $mail->send();
     } catch (\Throwable $e) {
-        // Silently fail — don't let the error handler itself cause more errors
+        // Silently fail
     }
 }
 
@@ -58,7 +46,7 @@ function buildErrorEmail(string $type, string $message, string $file, int $line,
     <html>
     <body style='font-family:Arial,sans-serif;color:#1e293b;max-width:700px;margin:auto;'>
         <div style='background:#ef4444;padding:20px 30px;border-radius:12px 12px 0 0;'>
-            <h2 style='color:#fff;margin:0;'>⚠️ Portfolio Error Alert</h2>
+            <h2 style='color:#fff;margin:0;'>Portfolio Error Alert</h2>
             <p style='color:rgba(255,255,255,0.85);margin:5px 0 0;'>$time</p>
         </div>
         <div style='background:#f8fafc;padding:30px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 12px 12px;'>
@@ -80,10 +68,7 @@ function buildErrorEmail(string $type, string $message, string $file, int $line,
 
 function showFriendlyErrorPage(): void
 {
-    // Prevent infinite loops if error page itself has issues
     if (isset($_GET['error_shown'])) return;
-
-    // Only output HTML if we haven't sent a JSON response yet
     if (headers_sent()) return;
 
     $isJson = isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') !== false;
@@ -151,7 +136,6 @@ set_error_handler(function (int $errno, string $errstr, string $errfile, int $er
     $body = buildErrorEmail($type, htmlspecialchars($errstr), htmlspecialchars($errfile), $errline);
     sendErrorMail("[Portfolio] PHP $type", $body);
 
-    // Only show error page for fatal-level errors
     if (in_array($errno, [E_ERROR, E_PARSE, E_USER_ERROR])) {
         showFriendlyErrorPage();
         exit;

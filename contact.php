@@ -1,18 +1,6 @@
 <?php
-require_once __DIR__ . '/error_handler.php';
+require_once __DIR__ . '/includes/mailer.php';
 header('Content-Type: application/json');
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-require_once 'C:/xampp/htdocs/ITVisionHub/media_library/vendor/phpmailer/phpmailer/src/Exception.php';
-require_once 'C:/xampp/htdocs/ITVisionHub/media_library/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require_once 'C:/xampp/htdocs/ITVisionHub/media_library/vendor/phpmailer/phpmailer/src/SMTP.php';
-
-$mailUsername = $_ENV['MAIL_USERNAME'] ?? '';
-$mailPassword = $_ENV['MAIL_PASSWORD'] ?? '';
-$mailTo       = $_ENV['MAIL_TO'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false, 'message' => 'Invalid request.']);
@@ -34,19 +22,12 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$mail = new PHPMailer(true);
+$creds = getMailCredentials();
 
 try {
-    $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
-    $mail->SMTPAuth   = true;
-    $mail->Username   = $mailUsername;
-    $mail->Password   = $mailPassword;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
-
-    $mail->setFrom($mailUsername, 'Portfolio Contact');
-    $mail->addAddress($mailTo, 'Su Myat Noe');
+    $mail = createMailer();
+    $mail->setFrom($creds['username'], 'Portfolio Contact');
+    $mail->addAddress($creds['to'], 'Su Myat Noe');
     $mail->addReplyTo($email, $name);
 
     $mail->isHTML(true);
