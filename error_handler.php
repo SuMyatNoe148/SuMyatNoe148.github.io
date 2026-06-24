@@ -3,11 +3,16 @@
 // Load .env
 $envFile = __DIR__ . '/.env';
 if (file_exists($envFile)) {
-    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
-        if (strpos(trim($line), '#') === 0) continue;
-        if (strpos($line, '=') === false) continue;
-        [$key, $value] = explode('=', $line, 2);
-        $_ENV[trim($key)] = trim($value);
+    $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    if ($lines === false) {
+        error_log('[Portfolio] Failed to read .env file: ' . $envFile);
+    } else {
+        foreach ($lines as $line) {
+            if (strpos(trim($line), '#') === 0) continue;
+            if (strpos($line, '=') === false) continue;
+            [$key, $value] = explode('=', $line, 2);
+            $_ENV[trim($key)] = trim($value);
+        }
     }
 }
 
@@ -43,7 +48,7 @@ function sendErrorMail(string $subject, string $body): void
         $mail->Body    = $body;
         $mail->send();
     } catch (\Throwable $e) {
-        // Silently fail — don't let the error handler itself cause more errors
+        error_log('[Portfolio] Error notification mail failed: ' . $e->getMessage());
     }
 }
 
@@ -136,6 +141,7 @@ set_exception_handler(function (\Throwable $e) {
         $e->getLine(),
         $trace
     );
+    error_log(sprintf('[Portfolio] Uncaught %s in %s:%d — %s', get_class($e), $e->getFile(), $e->getLine(), $e->getMessage()));
     sendErrorMail('[Portfolio] Uncaught Exception: ' . get_class($e), $body);
     showFriendlyErrorPage();
     exit;
@@ -148,6 +154,7 @@ set_error_handler(function (int $errno, string $errstr, string $errfile, int $er
         E_NOTICE => 'Notice', E_USER_ERROR => 'User Error', E_USER_WARNING => 'User Warning',
     ];
     $type = $types[$errno] ?? "Error ($errno)";
+    error_log(sprintf('[Portfolio] %s in %s:%d — %s', $type, $errfile, $errline, $errstr));
     $body = buildErrorEmail($type, htmlspecialchars($errstr), htmlspecialchars($errfile), $errline);
     sendErrorMail("[Portfolio] PHP $type", $body);
 
@@ -163,6 +170,7 @@ set_error_handler(function (int $errno, string $errstr, string $errfile, int $er
 register_shutdown_function(function () {
     $error = error_get_last();
     if ($error && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR])) {
+        error_log(sprintf('[Portfolio] Fatal Shutdown Error in %s:%d — %s', $error['file'], $error['line'], $error['message']));
         $body = buildErrorEmail(
             'Fatal Shutdown Error',
             htmlspecialchars($error['message']),
@@ -170,6 +178,8 @@ register_shutdown_function(function () {
             $error['line']
         );
         sendErrorMail('[Portfolio] Fatal Error on Shutdown', $body);
-        showFriendlyErrorPage();
+        if (!headers_sent()) {
+            showFriendlyErrorPage();
+        }
     }
 });
