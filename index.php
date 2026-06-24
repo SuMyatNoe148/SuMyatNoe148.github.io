@@ -1,6 +1,20 @@
 <?php
 require_once __DIR__ . '/error_handler.php';
 
+// Security headers
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: DENY');
+header('X-XSS-Protection: 1; mode=block');
+header('Referrer-Policy: strict-origin-when-cross-origin');
+header('Permissions-Policy: camera=(), microphone=(), geolocation=()');
+
+// Generate CSRF token for the contact form
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrfToken = $_SESSION['csrf_token'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,9 +23,9 @@ require_once __DIR__ . '/error_handler.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Su Myat Noe - Software Developer Portfolio</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" integrity="sha384-dYqorqMYC3OS7KzGisYPbOXtpJOSc2NM7v3hVWV68iggoQirrz5HPKSTnR6DMXEF" crossorigin="anonymous">
     <!-- Preconnect for faster loading -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -548,23 +562,24 @@ require_once __DIR__ . '/error_handler.php';
                 <div class="col-lg-7 reveal-right">
                     <div class="contact-form-wrapper">
                         <form id="contactForm" class="contact-form">
+                            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrfToken, ENT_QUOTES, 'UTF-8') ?>">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your Name" name="name" required>
+                                        <input type="text" class="form-control" placeholder="Your Name" name="name" required maxlength="100">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Your Email" name="email" required>
+                                        <input type="email" class="form-control" placeholder="Your Email" name="email" required maxlength="254">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject" name="subject">
+                                <input type="text" class="form-control" placeholder="Subject" name="subject" maxlength="200">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" rows="5" placeholder="Your Message" name="message" required></textarea>
+                                <textarea class="form-control" rows="5" placeholder="Your Message" name="message" required maxlength="5000"></textarea>
                             </div>
                             <div id="formMsg" class="mb-3" style="display:none;"></div>
                             <button type="submit" class="btn btn-primary btn-lg w-100">Send Message <i class="fas fa-paper-plane ms-2"></i></button>

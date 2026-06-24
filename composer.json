@@ -1,0 +1,12 @@
+{
+    "name": "sumyatnoe/portfolio",
+    "description": "Personal portfolio website",
+    "type": "project",
+    "require": {
+        "php": ">=8.0",
+        "phpmailer/phpmailer": "^6.8"
+    },
+    "autoload": {
+        "psr-4": {}
+    }
+}
