@@ -2,24 +2,35 @@
 // Modern, interactive functionality
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
-    initNavbar();
-    initTypewriter();
-    initParticles();
-    initCounters();
-    initSkillBars();
-    initProjectFilter();
-    initBackToTop();
-    initSmoothScroll();
-    initContactForm();
-    initThemeToggle();
-    initScrollReveal();
+    // Initialize all components independently so one failure doesn't break the rest
+    var components = [
+        ['Navbar', initNavbar],
+        ['Typewriter', initTypewriter],
+        ['Particles', initParticles],
+        ['Counters', initCounters],
+        ['SkillBars', initSkillBars],
+        ['ProjectFilter', initProjectFilter],
+        ['BackToTop', initBackToTop],
+        ['SmoothScroll', initSmoothScroll],
+        ['ContactForm', initContactForm],
+        ['ThemeToggle', initThemeToggle],
+        ['ScrollReveal', initScrollReveal]
+    ];
+
+    components.forEach(function(entry) {
+        try {
+            entry[1]();
+        } catch (err) {
+            console.error('[Portfolio] Failed to initialize ' + entry[0] + ':', err);
+        }
+    });
 });
 
 // Navbar scroll effect
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
-    
+    if (!navbar) return;
+
     window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -32,6 +43,8 @@ function initNavbar() {
 // Typewriter effect for hero name
 function initTypewriter() {
     const typewriterElement = document.getElementById('typewriter');
+    if (!typewriterElement) return;
+
     const text = 'Su Myat Noe';
     let index = 0;
     
@@ -50,6 +63,8 @@ function initTypewriter() {
 // Create floating particles
 function initParticles() {
     const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+
     const particleCount = 30;
     
     for (let i = 0; i < particleCount; i++) {
@@ -158,7 +173,8 @@ function initProjectFilter() {
 // Back to top button
 function initBackToTop() {
     const backToTopBtn = document.getElementById('backToTop');
-    
+    if (!backToTopBtn) return;
+
     window.addEventListener('scroll', function() {
         if (window.scrollY > 500) {
             backToTopBtn.classList.add('show');
@@ -196,8 +212,11 @@ function initSmoothScroll() {
 // Contact form handling
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
     const formMsg = document.getElementById('formMsg');
     const submitBtn = contactForm.querySelector('button[type="submit"]');
+    if (!formMsg || !submitBtn) return;
 
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -213,8 +232,13 @@ function initContactForm() {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
-        .then(data => {
+        .then(function(res) {
+            if (!res.ok) {
+                throw new Error('Server responded with status ' + res.status);
+            }
+            return res.json();
+        })
+        .then(function(data) {
             formMsg.style.display = 'block';
             if (data.success) {
                 formMsg.className = 'mb-3 alert alert-success';
@@ -222,15 +246,16 @@ function initContactForm() {
                 contactForm.reset();
             } else {
                 formMsg.className = 'mb-3 alert alert-danger';
-                formMsg.textContent = data.message;
+                formMsg.textContent = data.message || 'Failed to send message.';
             }
         })
-        .catch(() => {
+        .catch(function(err) {
+            console.error('[Portfolio] Contact form error:', err);
             formMsg.style.display = 'block';
             formMsg.className = 'mb-3 alert alert-danger';
             formMsg.textContent = 'Something went wrong. Please try again.';
         })
-        .finally(() => {
+        .finally(function() {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
         });
@@ -240,22 +265,32 @@ function initContactForm() {
 // Theme Toggle functionality
 function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;
+
     const html = document.documentElement;
     const icon = themeToggle.querySelector('i');
-    
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        html.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme, icon);
+    if (!icon) return;
+
+    try {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme, icon);
+        }
+    } catch (e) {
+        console.error('[Portfolio] Could not read theme preference:', e);
     }
-    
+
     themeToggle.addEventListener('click', function() {
         const currentTheme = html.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
+
         html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+        try {
+            localStorage.setItem('theme', newTheme);
+        } catch (e) {
+            console.error('[Portfolio] Could not save theme preference:', e);
+        }
         updateThemeIcon(newTheme, icon);
     });
 }

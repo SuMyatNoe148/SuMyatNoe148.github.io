@@ -14,6 +14,10 @@ $mailUsername = $_ENV['MAIL_USERNAME'] ?? '';
 $mailPassword = $_ENV['MAIL_PASSWORD'] ?? '';
 $mailTo       = $_ENV['MAIL_TO'] ?? '';
 
+if (empty($mailUsername) || empty($mailPassword) || empty($mailTo)) {
+    error_log('[Portfolio] Contact form: mail credentials are not configured. Check .env file.');
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false, 'message' => 'Invalid request.']);
     exit;
@@ -68,7 +72,11 @@ try {
 
     $mail->send();
     echo json_encode(['success' => true, 'message' => "Your message has been sent! I'll get back to you soon."]);
-} catch (Exception $e) {
-    echo json_encode(['success' => false, 'message' => 'Failed to send message: ' . $mail->ErrorInfo]);
+} catch (\Throwable $e) {
+    error_log('[Portfolio] Contact form mail error: ' . $e->getMessage());
+    $userMessage = ($e instanceof Exception && !empty($mail->ErrorInfo))
+        ? 'Failed to send message: ' . $mail->ErrorInfo
+        : 'Failed to send message. Please try again later.';
+    echo json_encode(['success' => false, 'message' => $userMessage]);
 }
 ?>
