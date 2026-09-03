@@ -7,7 +7,7 @@ require_once __DIR__ . '/error_handler.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Su Myat Noe - Software Developer Portfolio</title>
+    <title>Su Myat Noe - .NET Developer / Software Technician</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -57,14 +57,14 @@ require_once __DIR__ . '/error_handler.php';
                     <div class="hero-content">
                         <p class="hero-greeting">Hello, I'm</p>
                         <h1 class="hero-name" id="typewriter"></h1>
-                        <p class="hero-title">Software Developer</p>
+                        <p class="hero-title">.NET Developer / Software Technician</p>
                         <p class="hero-description">
-                            Software Developer experienced in PHP, C#, .NET, SQL Server, and MySQL, with a strong interest in software architecture and problem-solving.
+                            Aspiring Software Technician with hands-on experience in C#, .NET, SQL Server, PHP, and software troubleshooting. Experienced in developing web and desktop applications, database management, debugging, and technical support.
                         </p>
                         <div class="hero-buttons">
                             <a href="#projects" class="btn btn-primary btn-lg">View My Work</a>
                             <a href="#contact" class="btn btn-outline-light btn-lg">Get In Touch</a>
-                            <a href="SuMyatNoe.pdf" class="btn btn-outline-light btn-lg" download><i class="fas fa-download me-2"></i>CV</a>
+                            <a href="SU MYAT NOE.pdf" class="btn btn-outline-light btn-lg" download><i class="fas fa-download me-2"></i>CV</a>
                         </div>
                         <div class="hero-social mt-4">
                             <a href="https://github.com/SuMyatNoe148" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
@@ -88,8 +88,8 @@ require_once __DIR__ . '/error_handler.php';
                             <span>Full Stack Dev</span>
                         </div>
                         <div class="floating-card card-3">
-                            <i class="fas fa-users"></i>
-                            <span>Team Leader</span>
+                            <i class="fas fa-bug"></i>
+                            <span>Software Technician</span>
                         </div>
                     </div>
                 </div>
@@ -120,45 +120,47 @@ require_once __DIR__ . '/error_handler.php';
                             <img src="su.png" alt="Su Myat Noe" class="img-fluid">
                         </div>
                         <div class="experience-badge">
-                            <span class="years">3+</span>
-                            <span class="text">Years<br>Teaching</span>
+                            <span class="years">1+</span>
+                            <span class="text">Years<br>Experience</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7 ps-lg-5 reveal-right">
                     <div class="about-content">
-                        <h3>I'm a Software Developer with Passion for Clean Architecture</h3>
+                        <h3>I'm a .NET Developer & Software Technician</h3>
                         <p>
-                            Software Developer experienced in PHP, C#, .NET, SQL Server, and MySQL, with a strong interest in 
-                            software architecture and problem-solving. I specialize in building robust applications using 
-                            Clean Architecture and Domain-Driven Design principles.
+                            Aspiring Software Technician with hands-on experience in C#, .NET, SQL Server, PHP, and software 
+                            troubleshooting. Experienced in developing web and desktop applications, database management, debugging, 
+                            and technical support. Passionate about system maintenance, software deployment, and solving technical 
+                            issues.
                         </p>
                         <p>
-                            Throughout my academic journey and professional experience, I've served as Project Leader for 
-                            software development projects and was an Executive Committee member throughout university years, 
-                            demonstrating strong leadership and collaboration skills.
+                            I specialize in building robust applications using Clean Architecture and Domain-Driven Design principles. 
+                            Throughout my academic journey and professional experience, I've served as Project Leader for software 
+                            development projects and was an Executive Committee member throughout university years, demonstrating 
+                            strong leadership and collaboration skills.
                         </p>
                         <div class="about-stats row">
                             <div class="col-4">
                                 <div class="stat-item reveal-scale reveal-delay-1">
-                                    <h4 class="counter" data-target="4">0</h4>
+                                    <h4 class="counter" data-target="8">0</h4>
                                     <p>Projects Completed</p>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="stat-item reveal-scale reveal-delay-2">
-                                    <h4 class="counter" data-target="3">0</h4>
-                                    <p>Years Teaching</p>
+                                    <h4 class="counter" data-target="1">0</h4>
+                                    <p>Years Experience</p>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="stat-item reveal-scale reveal-delay-3">
-                                    <h4 class="counter" data-target="10">0</h4>
+                                    <h4 class="counter" data-target="15">0</h4>
                                     <p>Technical Skills</p>
                                 </div>
                             </div>
                         </div>
-                        <a href="SuMyatNoe.pdf" class="btn btn-primary mt-4 reveal reveal-delay-4" download>Download CV <i class="fas fa-download ms-2"></i></a>
+                        <a href="SU MYAT NOE.pdf" class="btn btn-primary mt-4 reveal reveal-delay-4" download>Download CV <i class="fas fa-download ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -178,9 +180,10 @@ require_once __DIR__ . '/error_handler.php';
                     <div class="skills-content">
                         <h3>Technical Proficiency</h3>
                         <p>
-                            Proficient in backend development with PHP, C#, and .NET. Strong database skills with MySQL and SQL Server. 
-                            Experienced in Clean Architecture, Domain-Driven Design (DDD), and MVC patterns. Passionate about 
-                            writing clean, maintainable code.
+                            Proficient in backend development with PHP, C#, .NET, and .NET Core. Strong database skills with MySQL, 
+                            SQL Server, Entity Framework Core, and stored procedures. Experienced in Clean Architecture, Domain-Driven 
+                            Design (DDD), MVC patterns, and Dependency Injection. Passionate about writing clean, maintainable code 
+                            and leveraging AI-assisted development tools.
                         </p>
                         <div class="skill-bars">
                             <div class="skill-item">
@@ -234,7 +237,7 @@ require_once __DIR__ . '/error_handler.php';
                         </div>
                         <div class="skill-card reveal-scale reveal-delay-3">
                             <i class="fab fa-microsoft"></i>
-                            <span>.NET</span>
+                            <span>.NET / .NET Core</span>
                         </div>
                         <div class="skill-card reveal-scale reveal-delay-4">
                             <i class="fas fa-database"></i>
@@ -249,28 +252,40 @@ require_once __DIR__ . '/error_handler.php';
                             <span>JavaScript</span>
                         </div>
                         <div class="skill-card reveal-scale reveal-delay-2">
+                            <i class="fas fa-cubes"></i>
+                            <span>Entity Framework Core</span>
+                        </div>
+                        <div class="skill-card reveal-scale reveal-delay-3">
                             <i class="fab fa-git-alt"></i>
                             <span>Git & GitHub</span>
                         </div>
-                        <div class="skill-card reveal-scale reveal-delay-3">
+                        <div class="skill-card reveal-scale reveal-delay-4">
                             <i class="fas fa-layer-group"></i>
                             <span>MVC</span>
                         </div>
-                        <div class="skill-card reveal-scale reveal-delay-4">
+                        <div class="skill-card reveal-scale reveal-delay-5">
                             <i class="fas fa-sitemap"></i>
                             <span>Clean Architecture</span>
                         </div>
-                        <div class="skill-card reveal-scale reveal-delay-5">
+                        <div class="skill-card reveal-scale reveal-delay-1">
                             <i class="fas fa-project-diagram"></i>
                             <span>DDD</span>
                         </div>
-                        <div class="skill-card reveal-scale reveal-delay-1">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML5</span>
-                        </div>
                         <div class="skill-card reveal-scale reveal-delay-2">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS3</span>
+                            <i class="fas fa-plug"></i>
+                            <span>Dependency Injection</span>
+                        </div>
+                        <div class="skill-card reveal-scale reveal-delay-3">
+                            <i class="fas fa-desktop"></i>
+                            <span>WinForms</span>
+                        </div>
+                        <div class="skill-card reveal-scale reveal-delay-4">
+                            <i class="fas fa-exchange-alt"></i>
+                            <span>REST APIs</span>
+                        </div>
+                        <div class="skill-card reveal-scale reveal-delay-5">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Dev Tools</span>
                         </div>
                     </div>
                 </div>
@@ -295,27 +310,18 @@ require_once __DIR__ . '/error_handler.php';
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
                                     <span class="timeline-date">Present</span>
-                                    <h4>IT Camp Trainee</h4>
-                                    <p class="timeline-company">IT Vision Hub</p>
-                                    <p>Participating in software development training. Enhancing programming and teamwork skills.</p>
+                                    <h4>Mid Level Software Technician</h4>
+                                    <p class="timeline-company">29 Jewellery</p>
+                                    <p>Providing technical support, software troubleshooting, system maintenance, and software deployment. Managing database operations and resolving technical issues.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <span class="timeline-date">Previous</span>
-                                    <h4>Computer Instructor</h4>
-                                    <p class="timeline-company">Teaching Institute</p>
-                                    <p>Taught computer fundamentals and software applications. Assisted students with practical learning activities.</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <span class="timeline-date">3 Years</span>
-                                    <h4>Teacher</h4>
-                                    <p class="timeline-company">Educational Institution</p>
-                                    <p>Delivered lessons and mentored students. Developed strong communication and leadership skills.</p>
+                                    <span class="timeline-date">1 Year</span>
+                                    <h4>Software Developer</h4>
+                                    <p class="timeline-company">IT Vision Hub Co., Ltd</p>
+                                    <p>Developed web and desktop applications using C#, .NET, PHP, and SQL Server. Gained hands-on experience in software architecture, debugging, and database management.</p>
                                 </div>
                             </div>
                         </div>
@@ -328,19 +334,10 @@ require_once __DIR__ . '/error_handler.php';
                             <div class="timeline-item">
                                 <div class="timeline-marker"></div>
                                 <div class="timeline-content">
-                                    <span class="timeline-date">Current</span>
-                                    <h4>Software Engineer Trainee</h4>
-                                    <p class="timeline-company">IT Vision Hub</p>
-                                    <p>Currently training in software development and enhancing programming skills.</p>
-                                </div>
-                            </div>
-                            <div class="timeline-item">
-                                <div class="timeline-marker"></div>
-                                <div class="timeline-content">
-                                    <span class="timeline-date">Completed</span>
-                                    <h4>Bachelor Of Computer Science</h4>
+                                    <span class="timeline-date">2019 - 2025</span>
+                                    <h4>Bachelor of Computer Science</h4>
                                     <p class="timeline-company">Dagon University</p>
-                                    <p>Graduated with focus on software development and computer science fundamentals.</p>
+                                    <p>Graduated with focus on software development, database management, and computer science fundamentals.</p>
                                 </div>
                             </div>
                             <div class="timeline-item">
@@ -376,15 +373,15 @@ require_once __DIR__ . '/error_handler.php';
                 <div class="col-lg-4 col-md-6 project-item reveal" data-category="web">
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="media_library.png" alt="Media Library System" class="img-fluid">
+                            <img src="HMIS.png" alt="Hospital Management System" class="img-fluid">
                             <div class="project-overlay">
                                 <a href="https://github.com/SuMyatNoe148" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
                         <div class="project-info">
                             <span class="project-category">Web App</span>
-                            <h4>Media Library System</h4>
-                            <p>Digital media management platform with authentication, notifications, and Stripe payment integration. Built with PHP, MySQL, JavaScript.</p>
+                            <h4>Hospital Management System</h4>
+                            <p>Developed a hospital management platform for managing patients, appointments, medical records, billing, pharmacy, laboratory, and radiology services. Built with ASP.NET Core, Blazor, C#, Entity Framework Core, SQL Server, MudBlazor.</p>
                         </div>
                     </div>
                 </div>
@@ -399,29 +396,14 @@ require_once __DIR__ . '/error_handler.php';
                         <div class="project-info">
                             <span class="project-category">ASP.Net</span>
                             <h4>Employee Management System</h4>
-                            <p>Employee management platform with CRUD operations, user management, and reporting features. Built with ASP.NET, SQL Management Studio, JavaScript.</p>
+                            <p>Developed an employee management platform with CRUD operations, user management, and reporting features. Built with ASP.NET, SQL Management Studio, JavaScript.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 project-item reveal reveal-delay-2" data-category="web">
+                <div class="col-lg-4 col-md-6 project-item reveal reveal-delay-2" data-category="desktop">
                     <div class="project-card">
                         <div class="project-image">
-                            <img src="CSRB.png" alt="CS Reference Book" class="img-fluid">
-                            <div class="project-overlay">
-                                <a href="https://github.com/SuMyatNoe148" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <span class="project-category">Web App</span>
-                            <h4>CS Reference Book</h4>
-                            <p>Educational platform for organizing and accessing computer science learning resources. Built with PHP, MySQL.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 project-item reveal reveal-delay-3" data-category="desktop">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/10b981/ffffff?text=IQ+Testing" alt="IQ Testing System" class="img-fluid">
+                            <img src="IQTest.png" alt="IQ Testing System" class="img-fluid">
                             <div class="project-overlay">
                                 <a href="https://github.com/SuMyatNoe148" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
                             </div>
@@ -429,7 +411,82 @@ require_once __DIR__ . '/error_handler.php';
                         <div class="project-info">
                             <span class="project-category">Desktop App</span>
                             <h4>IQ Testing System</h4>
-                            <p>Desktop application for timed IQ assessments, automatic scoring, and report generation. Built with C#, WinForms, SQL Server.</p>
+                            <p>Built a desktop application for timed IQ assessments, automatic scoring, and report generation. Built with C#, WinForms, SQL Server.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 project-item reveal reveal-delay-3" data-category="web">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="CSRB.png" alt="Computer Science Reference Book" class="img-fluid">
+                            <div class="project-overlay">
+                                <a href="https://github.com/SuMyatNoe148" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Web App</span>
+                            <h4>Computer Science Reference Book</h4>
+                            <p>Developed an educational platform for organizing and accessing computer science learning resources. Built with PHP, MySQL.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 project-item reveal reveal-delay-4" data-category="web">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="media_library.png" alt="Media Library System" class="img-fluid">
+                            <div class="project-overlay">
+                                <a href="https://github.com/SuMyatNoe148" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Web App</span>
+                            <h4>Media Library System</h4>
+                            <p>Developed a digital media management platform with authentication, notifications, and Stripe payment integration. Built with PHP, MySQL, JavaScript.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 project-item reveal reveal-delay-5" data-category="desktop">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300/6366f1/ffffff?text=User+Management" alt="User Management Module" class="img-fluid">
+                            <div class="project-overlay">
+                                <a href="https://github.com/SuMyatNoe148" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Desktop App</span>
+                            <h4>User Management Module</h4>
+                            <p>Developed a user management system with user registration, authentication, and CRUD operations. Built with C#, WinForms.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 project-item reveal" data-category="desktop">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300/10b981/ffffff?text=Task+Management" alt="Task Management & Note App" class="img-fluid">
+                            <div class="project-overlay">
+                                <a href="https://github.com/SuMyatNoe148" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Desktop App</span>
+                            <h4>Task Management & Note App</h4>
+                            <p>Developed a desktop application for task tracking, note management, deadline monitoring, and data persistence. Built with C#, .NET 8, WinForms, Entity Framework Core, SQL Server.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 project-item reveal reveal-delay-1" data-category="web">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/400x300/f59e0b/ffffff?text=ERP+System" alt="ERP System" class="img-fluid">
+                            <div class="project-overlay">
+                                <a href="https://github.com/SuMyatNoe148" class="project-link" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-category">Web App</span>
+                            <h4>ERP System</h4>
+                            <p>Enterprise Resource Planning system currently in development. Designed for managing business operations, inventory, and organizational workflows.</p>
                         </div>
                     </div>
                 </div>
@@ -518,7 +575,7 @@ require_once __DIR__ . '/error_handler.php';
                                 <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                                 <div class="info">
                                     <h5>Location</h5>
-                                    <p>21/460, Aung Zay Yone St, Shwe Pauk Kan, Myanmar</p>
+                                    <p>Shwe Pauk Kan, North Okkalarpa, Yangon, Myanmar</p>
                                 </div>
                             </div>
                             <div class="contact-item">
@@ -542,7 +599,7 @@ require_once __DIR__ . '/error_handler.php';
                             <a href="mailto:sumyatnoe3878@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
                             <a href="tel:+959782846436" class="social-btn"><i class="fas fa-phone"></i></a>
                         </div>
-                        <a href="SuMyatNoe.pdf" class="btn btn-outline-light mt-4" download><i class="fas fa-download me-2"></i>Download My CV</a>
+                        <a href="SU MYAT NOE.pdf" class="btn btn-outline-light mt-4" download><i class="fas fa-download me-2"></i>Download My CV</a>
                     </div>
                 </div>
                 <div class="col-lg-7 reveal-right">
@@ -580,7 +637,7 @@ require_once __DIR__ . '/error_handler.php';
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 Su Myat Noe. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2025 Su Myat Noe. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="mb-0">Built with <i class="fas fa-heart text-danger"></i> by Su Myat Noe</p>
